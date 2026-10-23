@@ -1,0 +1,98 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Sitios
+
+@{
+    ViewBag.Title = "Detalles del sitio";
+}
+
+<!-- ENCABEZADO -->
+<div class="mb-4">
+    <h2>Detalles del sitio</h2>
+    <p class="text-muted">
+        Información del sitio de observación de aves.
+    </p>
+</div>
+
+<!-- TARJETA DE INFORMACIÓN -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header text-white"
+         style="background-color:#0f5c4a">
+        <h5 class="mb-0">@Model.Nombre</h5>
+    </div>
+
+    <div class="card-body">
+
+        <h5 class="mb-3">Información general</h5>
+
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                Nombre
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(m => m.Nombre)
+            </dd>
+
+            <dt class="col-sm-4">
+                Tipo
+            </dt>
+            <dd class="col-sm-8">
+                <span class="badge bg-info text-dark">
+                    @Model.Tipo
+                </span>
+            </dd>
+
+            <dt class="col-sm-4">
+                Provincia
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(m => m.Provincia)
+            </dd>
+
+            <dt class="col-sm-4">
+                Altitud (msnm)
+            </dt>
+            <dd class="col-sm-8">
+                @Model.AltitudMsnm.ToString("N0")
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        <h5 class="mb-3">Ubicación geográfica</h5>
+
+        <dl class="row">
+
+            <dt class="col-sm-4">
+                Latitud
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(m => m.Latitud)
+            </dd>
+
+            <dt class="col-sm-4">
+                Longitud
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(m => m.Longitud)
+            </dd>
+
+        </dl>
+
+    </div>
+</div>
+
+<!-- BOTONES DE NAVEGACIÓN -->
+<div class="d-flex gap-2">
+
+    @Html.ActionLink("Editar sitio", "Edit",
+        new { id = Model.SitioId },
+        new { @class = "btn btn-primary" })
+
+    @Html.ActionLink("Volver al listado", "Index",
+        "Sitios", null,
+        new { @class = "btn btn-outline-secondary" })
+
+</div>

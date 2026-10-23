@@ -1,0 +1,71 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Sitios
+
+@{
+    ViewBag.Title = "Editar sitio";
+}
+
+<!-- ENCABEZADO -->
+<div class="mb-4">
+    <h2>Editar sitio</h2>
+
+    <p class="text-muted">
+        Modifique la información del sitio de observación.
+    </p>
+</div>
+
+<!-- FORMULARIO -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header text-white"
+         style="background-color:#0f5c4a">
+
+        <h5 class="mb-0">
+            Editando: @Model.Nombre
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        @using (Html.BeginForm("Edit", "Sitios", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- IDENTIFICADOR DEL REGISTRO -->
+            @Html.HiddenFor(m => m.SitioId)
+
+            <!-- ERRORES GENERALES -->
+            @Html.ValidationSummary(true, "",
+                new { @class = "text-danger mb-3" })
+
+            <!-- CAMPOS COMPARTIDOS -->
+            @Html.Partial("_Formulario")
+
+            <hr class="my-4" />
+
+            <!-- BOTONES -->
+            <div class="d-flex gap-2">
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Guardar cambios
+                </button>
+
+                @Html.ActionLink("Cancelar", "Index",
+                    "Sitios", null,
+                    new { @class = "btn btn-outline-secondary" })
+
+            </div>
+        }
+
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+}

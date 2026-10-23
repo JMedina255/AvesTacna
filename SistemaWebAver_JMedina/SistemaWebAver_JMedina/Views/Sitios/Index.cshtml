@@ -1,0 +1,126 @@
+﻿
+@model IEnumerable<SistemaWebAver_JMedina.Models.Sitios>
+
+@{
+    ViewBag.Title = "Sitios de observación";
+}
+
+<!-- TÍTULO -->
+<div class="mb-4">
+    <h2 class="mb-1">Sitios de observación</h2>
+    <p class="text-muted">
+        @Model.Count() sitios registrados
+    </p>
+</div>
+
+<!-- BÚSQUEDA Y REGISTRO -->
+<div class="row g-3 mb-4">
+
+    <div class="col-md-9">
+
+        @using (Html.BeginForm("Index", "Sitios", FormMethod.Get))
+        {
+            <div class="input-group">
+
+                <input type="text"
+                       name="buscar"
+                       class="form-control"
+                       placeholder="Buscar por nombre o tipo"
+                       value="@ViewBag.Buscar" />
+
+                <button type="submit"
+                        class="btn btn-outline-success">
+                    Buscar
+                </button>
+
+                @Html.ActionLink("Limpiar", "Index", "Sitios",
+                    null, new { @class = "btn btn-outline-secondary" })
+
+            </div>
+        }
+
+    </div>
+
+    <div class="col-md-3 text-md-end">
+
+        @Html.ActionLink("+ Nuevo sitio", "Create", "Sitios",
+            null, new { @class = "btn btn-success" })
+
+    </div>
+
+</div>
+
+<!-- TABLA DE SITIOS -->
+@if (!Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        No se encontraron sitios con ese criterio.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+
+        <table class="table table-striped table-hover align-middle">
+
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Provincia</th>
+                    <th>Altitud (msnm)</th>
+                    <th>Expediciones</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Nombre</td>
+
+                        <td>
+                            <span class="badge bg-info text-dark">
+                                @item.Tipo
+                            </span>
+                        </td>
+
+                        <td>@item.Provincia</td>
+
+                        <td>@item.AltitudMsnm.ToString("N0")</td>
+
+                        <td>
+                            <span class="badge rounded-pill bg-success">
+                                @(item.Expediciones == null
+                                    ? 0
+                                    : item.Expediciones.Count)
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="d-flex flex-wrap gap-1">
+
+                                @Html.ActionLink("Detalles", "Details",
+                                    new { id = item.SitioId },
+                                    new { @class = "btn btn-sm btn-info" })
+
+                                @Html.ActionLink("Editar", "Edit",
+                                    new { id = item.SitioId },
+                                    new { @class = "btn btn-sm btn-primary" })
+
+                                @Html.ActionLink("Eliminar", "Delete",
+                                    new { id = item.SitioId },
+                                    new { @class = "btn btn-sm btn-danger" })
+
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+}

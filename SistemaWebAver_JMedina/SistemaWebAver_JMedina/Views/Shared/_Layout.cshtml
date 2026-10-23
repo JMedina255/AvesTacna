@@ -1,0 +1,164 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title - Aves de Tacna</title>
+    <!--Bootstrap-->
+    <link href="@Url.Content("~/Source/css/bootstrap.min.css")"
+          rel="stylesheet" />
+    <!--Site-->
+    <link href="@Url.Content("~/Content/Site.css")"
+          rel="stylesheet" />
+    <!--Datatables-->
+
+
+
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+         style="background-color:#0f5c4a">
+
+        <div class="container">
+
+            @Html.ActionLink("Aves de Tacna", "Index", "Home",
+                null, new { @class = "navbar-brand" })
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal"
+                    aria-expanded="false"
+                    aria-label="Mostrar menú">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse"
+                 id="menuPrincipal">
+
+                <ul class="navbar-nav me-auto">
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Inicio", "Index", "Home",
+                            null, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item">
+                        @Html.ActionLink("Sitios", "Index", "Sitios",
+                            null, new { @class = "nav-link" })
+                    </li>
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Más opciones
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <span class="dropdown-item-text text-muted">
+                                    Próximos módulos
+                                </span>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container body-content">
+
+        <!-- MENSAJES DE ÉXITO -->
+        @if (TempData["Mensaje"] != null)
+        {
+        <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+
+            @TempData["Mensaje"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Cerrar">
+            </button>
+        </div>
+        }
+
+        <!-- MENSAJES DE ERROR -->
+        @if (TempData["Error"] != null)
+        {
+        <div class="alert alert-danger alert-dismissible fade show"
+             role="alert">
+
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Cerrar">
+            </button>
+        </div>
+        }
+
+        <!-- CONTENIDO DE CADA VISTA -->
+        @RenderBody()
+
+        <hr class="mt-4" />
+
+        <!-- PIE DE PÁGINA -->
+        <footer class="pb-3">
+            <p class="text-muted small">
+                &copy; @DateTime.Now.Year -
+                Programación Web II · UPT
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="@Url.Content("~/Scripts/jquery-3.7.1.min.js")"></script>
+
+    <script src="@Url.Content("~/Source/js/bootstrap.bundle.min.js")"></script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+
+
+<script>
+    $(document).ready(function () {
+        new DataTable('#item1', {
+            ajax: '../data/2500.txt',
+            scrollCollapse: true,
+            scroller: true,
+            scrollY: 200
+        });
+
+        new DataTable('#item2', {
+            cardView: {
+                mode: 'cards',
+                template: DataTable.CardView.templates.dlList
+            }
+        });
+
+    })
+</script>
+

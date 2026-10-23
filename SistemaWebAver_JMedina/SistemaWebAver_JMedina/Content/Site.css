@@ -1,0 +1,63 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    background-color: #f7f9f8;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Barra de navegación con el color del proyecto */
+.navbar-inverse {
+    background-color: #0f5c4a;
+    border-color: #0b4538;
+}
+
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-nav > li > a {
+        color: #e6f4ef;
+    }
+
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-brand:hover {
+            color: #ffffff;
+            background-color: #0b4538;
+        }
+
+    .navbar-inverse .navbar-nav > .active > a {
+        background-color: #0b4538;
+        color: #ffffff;
+    }
+
+h2 {
+    color: #0f5c4a;
+}
+
+.page-header {
+    margin-top: 10px;
+}
+
+.table > thead > tr > th {
+    background-color: #e7f1ee;
+    color: #0f5c4a;
+}
+
+footer p {
+    color: #777;
+    font-size: 12px;
+}
+
+/* Validación (jQuery Unobtrusive Validation) */
+.input-validation-error {
+    border-color: #a94442;
+}
+
+.field-validation-error {
+    color: #a94442;
+}
+
+.validation-summary-errors ul {
+    padding-left: 18px;
+}

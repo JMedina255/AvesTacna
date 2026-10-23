@@ -1,0 +1,47 @@
+﻿@model SistemaWebAver_JMedina.Models.Sitios
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Nombre, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", placeholder = "Ej. Humedales de Ite" })
+        @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Tipo, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.DropDownListFor(m => m.Tipo, (SelectList)ViewBag.Tipos, "-- Seleccione --",
+                              new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Tipo, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Provincia, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.DropDownListFor(m => m.Provincia, (SelectList)ViewBag.Provincias, "-- Seleccione --",
+                              new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Provincia, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.AltitudMsnm, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.TextBoxFor(m => m.AltitudMsnm, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AltitudMsnm, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Latitud, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.TextBoxFor(m => m.Latitud, new { @class = "form-control", placeholder = "-17.86000" })
+        @Html.ValidationMessageFor(m => m.Latitud, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Longitud, new { @class = "control-label col-md-2" })
+    <div class="col-md-6">
+        @Html.TextBoxFor(m => m.Longitud, new { @class = "form-control", placeholder = "-70.96000" })
+        @Html.ValidationMessageFor(m => m.Longitud, "", new { @class = "text-danger" })
+    </div>
+</div>
+
