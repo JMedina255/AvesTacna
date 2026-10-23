@@ -56,26 +56,40 @@
                             null, new { @class = "nav-link" })
                     </li>
 
-                    <li class="nav-item dropdown">
 
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"
                            href="#"
+                           id="menuMasOpciones"
                            role="button"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
                             Más opciones
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" aria-labelledby="menuMasOpciones">
 
                             <li>
-                                <span class="dropdown-item-text text-muted">
-                                    Próximos módulos
-                                </span>
+                                @Html.ActionLink(
+                                    "Expediciones",
+                                    "Index",
+                                    "Expediciones",
+                                    null,
+                                    new { @class = "dropdown-item" })
+                            </li>
+
+                            <li>
+                                @Html.ActionLink(
+                                    "Observadores",
+                                    "Index",
+                                    "Observadores",
+                                    null,
+                                    new { @class = "dropdown-item" })
                             </li>
 
                         </ul>
                     </li>
+
 
                 </ul>
             </div>
@@ -88,33 +102,33 @@
         <!-- MENSAJES DE ÉXITO -->
         @if (TempData["Mensaje"] != null)
         {
-        <div class="alert alert-success alert-dismissible fade show"
-             role="alert">
+            <div class="alert alert-success alert-dismissible fade show"
+                 role="alert">
 
-            @TempData["Mensaje"]
+                @TempData["Mensaje"]
 
-            <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                    aria-label="Cerrar">
-            </button>
-        </div>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar">
+                </button>
+            </div>
         }
 
         <!-- MENSAJES DE ERROR -->
         @if (TempData["Error"] != null)
         {
-        <div class="alert alert-danger alert-dismissible fade show"
-             role="alert">
+            <div class="alert alert-danger alert-dismissible fade show"
+                 role="alert">
 
-            @TempData["Error"]
+                @TempData["Error"]
 
-            <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                    aria-label="Cerrar">
-            </button>
-        </div>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar">
+                </button>
+            </div>
         }
 
         <!-- CONTENIDO DE CADA VISTA -->
@@ -129,7 +143,23 @@
                 Programación Web II · UPT
             </p>
         </footer>
+        @if (TempData["ok"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["ok"]
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        }
 
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["error"]
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        }
     </main>
 
     <!-- JAVASCRIPT -->

@@ -150,6 +150,15 @@
     <Content Include="Views\Sitios\_Formulario.cshtml" />
     <Content Include="Views\Sitios\Edit.cshtml" />
     <Content Include="Views\Sitios\Delete.cshtml" />
+    <Content Include="Views\Expediciones\Index.cshtml" />
+    <Content Include="Views\Expediciones\_Formulario.cshtml" />
+    <Content Include="Views\Expediciones\Create.cshtml" />
+    <Content Include="Views\Expediciones\Edit.cshtml" />
+    <Content Include="Views\Expediciones\Details.cshtml" />
+    <Content Include="Views\Expediciones\Delete.cshtml" />
+    <Content Include="Views\Observadores\Index.cshtml" />
+    <Content Include="Views\Observadores\AgregarEditar.cshtml" />
+    <Content Include="Views\Observadores\Ver.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,8 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Expediciones\" />
-    <Folder Include="Views\Observadores\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

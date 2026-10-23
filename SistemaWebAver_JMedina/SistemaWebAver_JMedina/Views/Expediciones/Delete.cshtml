@@ -1,0 +1,68 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Expediciones
+
+@{
+    ViewBag.Title = "Eliminar expedición";
+}
+
+<h2>Eliminar expedición</h2>
+
+<div class="alert alert-warning">
+    <strong>Atención:</strong>
+    ¿Estás seguro de que deseas eliminar esta expedición?
+    Esta acción no se puede deshacer.
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Expedición que se eliminará
+    </div>
+
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+
+            <dt>Identificador</dt>
+            <dd>@Model.ExpedicionId</dd>
+
+            <dt>Fecha</dt>
+            <dd>@Model.Fecha.ToString("dd/MM/yyyy")</dd>
+
+            <dt>Nombre</dt>
+            <dd>@Model.Nombre</dd>
+
+            <dt>Sitio</dt>
+            <dd>
+                @(Model.Sitios == null
+                    ? "Sin sitio"
+                    : Model.Sitios.Nombre)
+            </dd>
+
+            <dt>Guía</dt>
+            <dd>
+                @(Model.Observadores == null
+                    ? "Sin guía"
+                    : Model.Observadores.Apellidos + ", "
+                      + Model.Observadores.Nombres)
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        @using (Html.BeginForm("Delete", "Expediciones",
+            new { id = Model.ExpedicionId }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="btn btn-danger">
+                Confirmar eliminación
+            </button>
+
+            @Html.ActionLink(
+                "Cancelar",
+                "Index",
+                null,
+                new { @class = "btn btn-default" })
+        }
+    </div>
+</div>

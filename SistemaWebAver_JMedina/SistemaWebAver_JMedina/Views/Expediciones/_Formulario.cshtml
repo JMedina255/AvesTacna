@@ -1,0 +1,49 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Expediciones
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Fecha, "Fecha", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(
+                m => m.Fecha,
+                "{0:yyyy-MM-dd}",
+                new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(m => m.Fecha, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre, "Nombre de la expedición", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("SitioId", "Sitio", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList(
+                "SitioId",
+                (SelectList)ViewBag.Sitios,
+                "-- Seleccione un sitio --",
+                new { @class = "form-control" })
+            @Html.ValidationMessage("SitioId", "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("GuiaId", "Guía", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList(
+                "GuiaId",
+                (SelectList)ViewBag.Guias,
+                "-- Seleccione un guía --",
+                new { @class = "form-control" })
+            @Html.ValidationMessage("GuiaId", "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

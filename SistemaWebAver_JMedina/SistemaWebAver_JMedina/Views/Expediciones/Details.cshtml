@@ -1,0 +1,58 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Expediciones
+
+@{
+    ViewBag.Title = "Detalles de la expedición";
+}
+
+<h2>Detalles de la expedición</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Información registrada
+    </div>
+
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+
+            <dt>Identificador</dt>
+            <dd>@Model.ExpedicionId</dd>
+
+            <dt>Fecha</dt>
+            <dd>@Model.Fecha.ToString("dd/MM/yyyy")</dd>
+
+            <dt>Nombre</dt>
+            <dd>@Model.Nombre</dd>
+
+            <dt>Sitio</dt>
+            <dd>
+                @(Model.Sitios == null
+                    ? "Sin sitio"
+                    : Model.Sitios.Nombre)
+            </dd>
+
+            <dt>Guía</dt>
+            <dd>
+                @(Model.Observadores == null
+                    ? "Sin guía"
+                    : Model.Observadores.Apellidos + ", "
+                      + Model.Observadores.Nombres)
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        @Html.ActionLink(
+            "Editar",
+            "Edit",
+            new { id = Model.ExpedicionId },
+            new { @class = "btn btn-primary" })
+
+        @Html.ActionLink(
+            "Volver al listado",
+            "Index",
+            null,
+            new { @class = "btn btn-default" })
+    </div>
+</div>

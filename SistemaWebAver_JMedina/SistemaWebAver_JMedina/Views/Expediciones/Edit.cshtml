@@ -1,0 +1,41 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Expediciones
+
+@{
+    ViewBag.Title = "Editar expedición";
+}
+
+<h2>Editar expedición</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Modificar datos de la expedición
+    </div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "Expediciones", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(m => m.ExpedicionId)
+
+            @Html.Partial("_Formulario", Model)
+
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">
+                        Guardar cambios
+                    </button>
+
+                    @Html.ActionLink(
+                        "Cancelar",
+                        "Index",
+                        null,
+                        new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

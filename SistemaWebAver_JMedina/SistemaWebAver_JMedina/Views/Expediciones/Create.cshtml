@@ -1,0 +1,39 @@
+﻿
+@model SistemaWebAver_JMedina.Models.Expediciones
+
+@{
+    ViewBag.Title = "Nueva expedición";
+}
+
+<h2>Nueva expedición</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Datos de la expedición
+    </div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Expediciones", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("_Formulario", Model)
+
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">
+                        Guardar expedición
+                    </button>
+
+                    @Html.ActionLink(
+                        "Cancelar",
+                        "Index",
+                        null,
+                        new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

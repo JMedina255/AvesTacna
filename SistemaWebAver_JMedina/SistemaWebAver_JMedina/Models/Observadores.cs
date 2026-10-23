@@ -6,6 +6,7 @@ namespace SistemaWebAver_JMedina.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     public partial class Observadores
     {

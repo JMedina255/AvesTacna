@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SistemaWebAver_JMedina.Models.Expediciones>
+
+@{
+    ViewBag.Title = "Expediciones";
+}
+
+<div class="page-header">
+    <h2>Expediciones <small>@Model.Count() registradas</small></h2>
+</div>
+
+<div class="row" style="margin-bottom: 15px">
+    <div class="col-sm-8">
+        @using (Html.BeginForm("Index", "Expediciones", FormMethod.Get))
+        {
+            <div class="input-group">
+                <input type="text"
+                       name="buscar"
+                       class="form-control"
+                       placeholder="Buscar expedición, sitio o guía"
+                       value="@ViewBag.Buscar" />
+
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        Buscar
+                    </button>
+                </span>
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-4 text-right">
+        @Html.ActionLink(
+                      "+ Nueva expedición",
+                      "Create",
+                      null,
+                      new { @class = "btn btn-success" })
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No se encontraron expediciones.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Sitio</th>
+                <th>Guía</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Nombre</td>
+                    <td>
+                        @(item.Sitios == null
+                            ? "Sin sitio"
+                            : item.Sitios.Nombre)
+                    </td>
+                    <td>
+                        @(item.Observadores == null
+                            ? "Sin guía"
+                            : item.Observadores.Apellidos + ", "
+                              + item.Observadores.Nombres)
+                    </td>
+                    <td>
+                        @Html.ActionLink(
+                                      "Detalles",
+                                      "Details",
+                                      new { id = item.ExpedicionId },
+                                      new { @class = "btn btn-xs btn-info" })
+
+                        @Html.ActionLink(
+                                      "Editar",
+                                      "Edit",
+                                      new { id = item.ExpedicionId },
+                                      new { @class = "btn btn-xs btn-primary" })
+
+                        @Html.ActionLink(
+                                      "Eliminar",
+                                      "Delete",
+                                      new { id = item.ExpedicionId },
+                                      new { @class = "btn btn-xs btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
